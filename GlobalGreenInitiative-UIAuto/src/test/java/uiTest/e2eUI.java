@@ -16,8 +16,7 @@ public class e2eUI {
 
     @BeforeAll
     public static void setup() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\abolu\\IdeaProjects\\GlobalGreenInitiative\\chromedriver.exe");
-
+        Configuration.browser = "chrome";
         Configuration.baseUrl = "http://localhost:8080/homepage/new";
     }
 
@@ -28,7 +27,6 @@ public class e2eUI {
         grantSubmit grant = new grantSubmit();
         customerForm form = new customerForm();
 
-        //home.open().searchFor("Nausicaä’s Global Green Initiative");
         home.open();
         sleep(2000);
         //home.searchFor("Group 2");
