@@ -17,5 +17,8 @@ public class customerForm {
         $(By.xpath("//button[text()='Submit']")).click();
     }
 
+    public String getCustomerPageText() {
+        return $(By.cssSelector("body > div > form > h3")).getText().trim();
+    }
 
 }

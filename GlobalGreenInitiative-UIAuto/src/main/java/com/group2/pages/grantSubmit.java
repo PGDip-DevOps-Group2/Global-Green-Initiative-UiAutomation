@@ -14,6 +14,10 @@ public class grantSubmit {
         $(By.xpath("//button[text()='Submit']")).click();
     }
 
+    public String getSubmitPageText() {
+        return $(By.cssSelector("body > div.container > form > h3")).getText().trim();
+    }
+
     public void submitGrant(String text){
         $(By.linkText(text)).pressEnter();
 
