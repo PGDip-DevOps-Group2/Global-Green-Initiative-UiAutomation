@@ -1,6 +1,7 @@
 package com.group2.pages;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 
@@ -23,6 +24,12 @@ public class homePage {
         $(By.linkText(text)).pressEnter();
 
     }
+
+
+    public String getHomePageText() {
+      return $(By.className("display-3")).getText().trim();
+    }
+
     public ElementsCollection results() {
         return $$(".srg .g");
     }
