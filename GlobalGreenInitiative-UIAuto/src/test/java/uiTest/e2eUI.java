@@ -7,6 +7,7 @@ import com.group2.pages.homePage;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 import static com.codeborne.selenide.CollectionCondition.size;
@@ -29,13 +30,15 @@ public class e2eUI {
 
         home.open();
         sleep(2000);
-        //home.searchFor("Group 2");
+
+        assertEquals(home.getHomePageText(), "Group 2");
+
         home.clickText("Apply");
-        sleep(2000);
+        sleep(1000);
         grant.selectGrant("$10,000");
-        sleep(3000);
+        sleep(1000);
         form.enterDetails("Abi", "Bolujo", "1 Mains Street", "01-12-1977");
-        sleep(3000);
+        sleep(2000);
 
     }
 
