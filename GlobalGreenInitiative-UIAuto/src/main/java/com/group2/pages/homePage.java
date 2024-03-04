@@ -1,6 +1,7 @@
 package com.group2.pages;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 
@@ -28,7 +29,8 @@ public class homePage {
         return $(By.className("navbar-brand")).getText();
     }
 
-     public ElementsCollection results() {
+
+    public ElementsCollection results() {
         return $$(".srg .g");
     }
 
