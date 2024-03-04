@@ -23,7 +23,12 @@ public class homePage {
         $(By.linkText(text)).pressEnter();
 
     }
-    public ElementsCollection results() {
+
+    public String getGroupText(){
+        return $(By.className("navbar-brand")).getText();
+    }
+
+     public ElementsCollection results() {
         return $$(".srg .g");
     }
 
