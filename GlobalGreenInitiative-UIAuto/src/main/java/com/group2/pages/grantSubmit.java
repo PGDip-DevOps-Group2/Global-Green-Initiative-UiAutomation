@@ -20,6 +20,12 @@ public class grantSubmit {
 
     public void submitGrant(String text){
         $(By.linkText(text)).pressEnter();
+    }
+
+    public String getSubmitText(){
+        return $(By.xpath("//*[@id='group']/p[1]")).getText();
+        //return $(By.linkText("submit")).getText();
+
 
     }
 

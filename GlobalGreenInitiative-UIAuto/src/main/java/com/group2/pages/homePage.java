@@ -25,10 +25,10 @@ public class homePage {
 
     }
 
-
-    public String getHomePageText() {
-      return $(By.className("display-3")).getText().trim();
+    public String getGroupText(){
+        return $(By.className("navbar-brand")).getText();
     }
+
 
     public ElementsCollection results() {
         return $$(".srg .g");
