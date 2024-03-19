@@ -2,10 +2,13 @@ package uiTest;
 
 import com.codeborne.selenide.Configuration;
 import com.group2.pages.customerForm;
+import com.group2.pages.grantSelection;
 import com.group2.pages.grantSubmit;
 import com.group2.pages.homePage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
+
+import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -14,38 +17,53 @@ public class e2eUiTest {
 
     @BeforeAll
     public static void setup() {
-        //Configuration.headless = true;
+       // Configuration.headless = true;
         Configuration.browser = "chrome";
-        Configuration.baseUrl = "http://localhost:8080/homepage/new";
+        Configuration.baseUrl = "http://localhost:8080/homepage";
+        open("/new");
     }
 
     @Test
     // @Order(1)
     public void apply4Grant() {
+        open("/new");
         homePage home = new homePage();
-        grantSubmit grant = new grantSubmit();
+        grantSelection grantSel = new grantSelection();
+        grantSubmit grantSub = new grantSubmit();
         customerForm form = new customerForm();
 
-        home.open();
-        sleep(2000);
+        /*
+        Selecting Ohmu Impact Grant
+         */
+        home.open().clickText("Apply");
+        grantSel.agreedTC("optionOne");
+        grantSel.selectGrantOption("btnOne");
 
-        //To confirm the test on the home page
-        assertEquals(home.getHomePageText(), "Group 2");
+        /*
+        Nausicaä’s Global Green Initiative Form Personal Details
+        */
+        form.enterDetails("Abi","Bolujo", "1 Ikoyi Royal Palace", "first.last@gmail.com");
 
-        home.clickText("Apply");
         sleep(1000);
 
-        //To confirm the test on the grant page
-        assertEquals(grant.getSubmitPageText(), "Select A Grant");
+        //Impactful Project:
+        form.selectGrantReq("requirementOne");
+        //Innovative Approach:
+        form.selectGrantReq("requirementTwo");
+        //Community Involvement:
+        form.selectGrantReq("requirementThree");
 
-        grant.selectGrant("$10,000");
+        form.clickButton("Submit");
         sleep(1000);
 
-        //To confirm the test on the customer form page
-        assertEquals(form.getCustomerPageText(), "Customer Form");
+        /*
+        Back to the home page
+        */
+        //Back to Home page
+        grantSub.click("Home");
+        sleep(1000);
 
-        form.enterDetails("Abi", "Bolujo", "1 Mains Street", "01-12-1977");
-        sleep(2000);
+
 
     }
 

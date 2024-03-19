@@ -8,19 +8,26 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 public class customerForm {
 
-    public void enterDetails(String fname, String lname, String address, String email,String dob, String msg){
+    public void enterDetails(String fname, String lname, String address, String email) {
         $(By.id("firstName")).setValue(fname);
         $(By.id("lastName")).setValue(lname);
         $(By.id("address")).setValue(address);
-        $(By.id("Email")).setValue(email);
-        $(By.id("DOB")).setValue(dob);
-        $(By.id("message")).setValue(msg);
-
+        $(By.id("email")).setValue(email);
     }
+
+        public void selectGrantReq(String text) {
+            $(By.name(""+text+"")).click();
+        }
 
     public void selectGender(String gender) {
        $(By.name("gender")).selectRadio(gender);
     }
+
+    public void clickButton(String text){
+        //$(By.linkText(text)).pressEnter();
+        $(By.xpath("//span[text()='" + text + "']")).click();
+    }
+
    public void clickSubmitButton(){
        $(By.xpath("//button[text()='Submit']")).click();
 

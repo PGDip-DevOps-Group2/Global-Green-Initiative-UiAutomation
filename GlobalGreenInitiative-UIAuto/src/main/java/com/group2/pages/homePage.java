@@ -10,7 +10,8 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class homePage {
 
-    public homePage open() {
+
+    public homePage open () {
         Selenide.open("http://localhost:8080/homepage/new");
         return this;
     }
@@ -21,9 +22,9 @@ public class homePage {
     }
 
     public void clickText(String text){
-        $(By.linkText(text)).pressEnter();
-
-    }
+        //$(By.linkText(text)).pressEnter();
+        $(By.xpath("//span[text()='" + text + "']")).click();
+ }
 
     public String getGroupText(){
         return $(By.className("navbar-brand")).getText();
