@@ -19,14 +19,15 @@ public class grantSubmit {
     }
 
     public void submitGrant(String text){
-        $(By.linkText(text)).pressEnter();
+        $(By.linkText(text)).click();
+    }
+
+    public void click(String text){
+        $(By.xpath("//span[text()='" + text + "']")).click();
     }
 
     public String getSubmitText(){
         return $(By.xpath("//*[@id='group']/p[1]")).getText();
-        //return $(By.linkText("submit")).getText();
-
-
     }
 
 }
