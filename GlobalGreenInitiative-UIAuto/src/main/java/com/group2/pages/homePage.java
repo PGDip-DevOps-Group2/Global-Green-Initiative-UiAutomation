@@ -12,7 +12,7 @@ public class homePage {
 
 
     public homePage open () {
-        Selenide.open("http://localhost:8080/homepage/new");
+        Selenide.open("http://3.255.115.108:8080/homepage/new");
         return this;
     }
 
