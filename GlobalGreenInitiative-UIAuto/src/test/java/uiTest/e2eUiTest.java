@@ -42,7 +42,7 @@ public class e2eUiTest {
         /*
         Nausicaä’s Global Green Initiative Form Personal Details
         */
-        form.enterDetails("Abi","Bolujo", "1 Ikoyi Royal Palace", "first.last@gmail.com");
+        form.enterDetails("Abi","Bolujo","1IkoyiRoyalPalace","first.last@gmail.com");
 
         sleep(1000);
 

@@ -2,54 +2,68 @@ package uiTest;
 
 import com.codeborne.selenide.Configuration;
 import com.group2.pages.customerForm;
+import com.group2.pages.grantSelection;
 import com.group2.pages.grantSubmit;
 import com.group2.pages.homePage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
 
-
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class e2eUITest {
+
+import static com.codeborne.selenide.Selenide.sleep;
+public class e2eUiTest {
 
     @BeforeAll
     public static void setup() {
-        Configuration.headless = true;
+       // Configuration.headless = true;
         Configuration.browser = "chrome";
-        Configuration.reopenBrowserOnFail= true;
-        Configuration.baseUrl = "http://localhost:8080/homepage/new";
+        Configuration.baseUrl = "http://localhost:8080/homepage";
+        open("/new");
     }
 
     @Test
     // @Order(1)
     public void apply4Grant() {
+        open("/new");
         homePage home = new homePage();
-        grantSubmit grant = new grantSubmit();
+        grantSelection grantSel = new grantSelection();
+        grantSubmit grantSub = new grantSubmit();
         customerForm form = new customerForm();
 
-        home.open();
-        sleep(1000);
-        assertEquals("Group Two", home.getGroupText());
+        /*
+        Selecting Ohmu Impact Grant
+         */
+        home.open().clickText("Apply");
+        grantSel.agreedTC("optionOne");
+        grantSel.selectGrantOption("btnOne");
 
-        //home.searchFor("Group 2");
-        home.clickText("Apply");
-        sleep(1000);
-        home.clickText("Customer");
-        sleep(1000);
+        /*
+        Nausicaä’s Global Green Initiative Form Personal Details
+        */
+        form.enterDetails("Abi","Bolujo","1IkoyiRoyalPalace","first.last@gmail.com");
 
-        //enter customer details
-        form.enterDetails("Abi", "Bolujo", "1 Mains Street", "l00186151atu.ie",  "01-12-1977", "Adding new customer");
-        sleep(1000);
-        form.selectGender("female");
         sleep(1000);
 
-        //submit form
-        form.clickSubmitButton();
+        //Impactful Project:
+        form.selectGrantReq("requirementOne");
+        //Innovative Approach:
+        form.selectGrantReq("requirementTwo");
+        //Community Involvement:
+        form.selectGrantReq("requirementThree");
 
-        sleep(2000);
-        assertEquals("thanks you for submitting your application", grant.getSubmitText());
+        form.clickButton("Submit");
         sleep(1000);
+
+        /*
+        Back to the home page
+        */
+        //Back to Home page
+        grantSub.click("Home");
+        sleep(1000);
+
+
 
     }
 
