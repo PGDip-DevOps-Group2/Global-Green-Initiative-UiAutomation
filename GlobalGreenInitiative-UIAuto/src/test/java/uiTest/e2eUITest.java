@@ -19,7 +19,7 @@ public class e2eUITest {
     public static void setup() {
         Configuration.headless = true;
         Configuration.browser = "chrome";
-        Configuration.baseUrl = "http://3.255.115.108:8080/homepage/new";
+        Configuration.baseUrl = "http://3.255.115.108:8080/homepage";
         open("/new");
     }
 
