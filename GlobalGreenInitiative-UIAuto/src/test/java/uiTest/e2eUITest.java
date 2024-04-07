@@ -18,7 +18,7 @@ public class e2eUITest {
     @BeforeAll
     public static void setup() {
         Configuration.headless = true;
-        Configuration.browser = "chrome";
+        Configuration.browser = "chromium";
         Configuration.baseUrl = "http://3.255.115.108:8080/homepage/new";
         open("/new");
     }
