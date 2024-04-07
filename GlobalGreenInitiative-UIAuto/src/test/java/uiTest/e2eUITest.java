@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 import static com.codeborne.selenide.Selenide.sleep;
-public class e2eUiTest {
+public class e2eUITest {
 
     @BeforeAll
     public static void setup() {
